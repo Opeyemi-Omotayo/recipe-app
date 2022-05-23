@@ -14,27 +14,22 @@ class RecipeView extends View {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
 
-  addHandlerUpdateServings(handler){
-    this._parentElement.addEventListener('click', function(e){
+  addHandlerUpdateServings(handler) {
+    this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--update-servings');
-      if(!btn) return
-      //console.log(btn);
-
-      const updateTo = +btn.dataset.updateTo
-      if(updateTo > 0) handler(updateTo);
-    })
+      if (!btn) return;
+      const { updateTo } = btn.dataset;
+      if (+updateTo > 0) handler(+updateTo);
+    });
   }
 
-  addHandlerAddBookmark(handler){
-    this._parentElement.addEventListener('click', function(e){
+  addHandlerAddBookmark(handler) {
+    this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--bookmark');
-      if(!btn) return
-      //console.log(btn);
-
+      if (!btn) return;
       handler();
-    })
+    });
   }
-
 
   _generateMarkup() {
     return `
